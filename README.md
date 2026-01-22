@@ -1,7 +1,7 @@
 # Vanguard
 
-- Starts: January 29, 2025 Noon UTC
-- Ends: February 05, 2025 Noon UTC
+- Starts: January 29, 2026 Noon UTC
+- Ends: February 05, 2026 Noon UTC
 
 - nSLOC: ~273
 
