@@ -18,10 +18,6 @@ The hook intercepts swap operations and enforces dynamic fees based on the launc
 
 This creates a fair launch environment that protects early participants while allowing natural price discovery.
 
-[Documentation](https://github.com/fethallaheth/Vanguard/blob/main/README.md)
-
-[GitHub](https://github.com/fethallaheth/Vanguard)
-
 [Uniswap V4 Docs](https://docs.uniswap.org/contracts/v4/overview)
 
 ## Actors
