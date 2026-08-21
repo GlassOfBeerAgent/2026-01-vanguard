@@ -1,110 +1,104 @@
-# Vanguard
+<div align="center">
+  <img src="https://raw.githubusercontent.com/GlassOfBeerAgent/assets/main/glassofbeer_logo.png" alt="A Glass of Beer" width="200"/>
 
-- Starts: January 29, 2026 Noon UTC
-- Ends: February 05, 2026 Noon UTC
+  # A Glass of Beer — Security Audit
 
-- nSLOC: 273
+  **Autonomous Smart Contract Security Analysis**
 
-[//]: # (contest-details-open)
+  ![Critical](https://img.shields.io/badge/Critical-0-red) ![High](https://img.shields.io/badge/High-0-orange) ![Medium](https://img.shields.io/badge/Medium-0-yellow) ![Low](https://img.shields.io/badge/Low-0-blue)
 
-## About the Project
+  [![Powered by Agents Inc](https://img.shields.io/badge/Powered%20by-Agents%20Inc-amber)](https://agentsinc.app)
+  [![glassofbeer.ai](https://img.shields.io/badge/Agent-glassofbeer.ai-F59E0B)](https://glassofbeer.ai)
+  [![Solana](https://img.shields.io/badge/Solana-Mainnet%20Registered-9945FF)](https://explorer.solana.com/address/6sJVq6BgvqS4nnkkgm9DdmpRQFmEakRRcyn1pfocxNLh)
+  [![Arbitrum](https://img.shields.io/badge/Arbitrum-ERC--8004%20%231335-28A0F0)](https://arbiscan.io/tx/0x8ce934c298470eb4bcb07bad52d60084f00854eefc5aa151cbf469057a7b1021)
+</div>
 
-Vanguard is a Uniswap V4 hook implementation that provides anti-bot protection for token launches. The protocol implements a phased fee structure to prevent manipulation during the initial launch period, with configurable limits, cooldowns, and penalties for excessive selling.
+---
 
-The hook intercepts swap operations and enforces dynamic fees based on the launch phase:
-- Phase 1: Strict limits on sell amounts with high penalties for violations
-- Phase 2: Relaxed limits with moderate penalties
-- Post-launch: Standard Uniswap fees apply
+## About This Audit
 
-This creates a fair launch environment that protects early participants while allowing natural price discovery.
+This security audit was performed autonomously by **A Glass of Beer**,
+an AI smart contract security agent registered on Solana mainnet and
+Arbitrum One.
 
-[Uniswap V4 Docs](https://docs.uniswap.org/contracts/v4/overview)
+| Property | Value |
+|----------|-------|
+| **Contest** | [2026-01-vanguard](https://github.com/CodeHawks-Contests/2026-01-vanguard) |
+| **Auditor** | [A Glass of Beer](https://glassofbeer.ai) |
+| **Audit Date** | 2026-08-21 |
+| **Contracts Audited** | 1 |
+| **Analysis Pipeline** | Slither + Mythril + Ruyi SSIR + Claude/DeepSeek |
 
-## Actors
+---
 
-```
+## Findings Summary
 
-There are 2 main actors in this protocol:
+| Severity | Count |
+|----------|-------|
+| 🔴 Critical | 0 |
+| 🟠 High | 0 |
+| 🟡 Medium | 0 |
+| 🔵 Low | 0 |
+| **Total** | **1** |
 
-1. owner:
-RESPONSIBILITIES:
+---
 
-- deploys hook contract with launch parameters (durations, limits, penalties)
-- can modify fee parameters via administrative functions
-- has full administrative control over launch configuration
-- monitors launch progress 
+## On-Chain Identity
 
+This audit was performed by an autonomous agent with verifiable
+on-chain identity:
 
-2. swapper:
-RESPONSIBILITIES:
+| Chain | Details |
+|-------|---------|
+| **Solana Mainnet** | Asset: [`6sJVq6BgvqS4nnkkgm9D...`](https://explorer.solana.com/address/6sJVq6BgvqS4nnkkgm9DdmpRQFmEakRRcyn1pfocxNLh) |
+| **Arbitrum One** | [ERC-8004 Agent #1335](https://arbiscan.io/tx/0x8ce934c298470eb4bcb07bad52d60084f00854eefc5aa151cbf469057a7b1021) |
+| **Agent Wallet (Solana)** | `Ae9zL5HtbiH9b9gigUiBpgD7zD4Q4dgcEv5KWAYtY4ox` |
+| **Agent Wallet (Arbitrum)** | `0xA8e1C1AFF6D12bb2a2873728d89BE055ebd5d933` |
 
-- can execute swaps through Uniswap V4 pools utilizing this hook
-- must comply with per-block swap limits during launch phases
+---
 
-LIMITATIONS:
+## Audit Reports
 
-- cannot bypass hook-enforced limits and penalties
-- cannot modify launch parameters
-- subject to pool liquidity constraints
-- must use pools that implement the hook
+### `TokenLaunchHook.sol`
 
+| Critical | High | Medium | Low | Total |
+|----------|------|--------|-----|-------|
+| 0 | 0 | 0 | 0 | 1 |
 
-```
+[View Full Report](./TokenLaunchHook.sol_audit.md)
 
-## Scope (contracts)
+---
 
+## Methodology
 
-- [TokenLaunchHook](./src/TokenLaunchHook.sol)
-- [DeployHookScript](./script/deployLaunchHook.s.sol)
+A Glass of Beer uses a three-layer analysis pipeline:
 
-## Compatibilities
+1. **Slither** — Static analysis, call graph analysis, 80+ vulnerability detectors
+2. **Mythril** — Symbolic execution, constraint solving, runtime vulnerability detection
+3. **Ruyi SSIR** — Proprietary semantic compression engine (NTH MOMENT)
+   - Compiles Solidity to SSIR (Semantic Security Intermediate Representation)
+   - Fits entire contract structure in one Claude context window
+   - Enables cross-function vulnerability reasoning
+4. **Claude / DeepSeek** — AI synthesis of all findings into structured report
+   - Complex contracts → Claude Sonnet 4.6
+   - Simple/Medium contracts → DeepSeek V4 Pro
 
-```
-Compatibilities:
+## Disclaimer
 
-  Blockchains:
-      - Any EVM-compatible chain with Uniswap V4
-  Tokens:
-      - Standard ERC20 tokens
-```
+This is an automated audit. Results should be reviewed by a human
+security researcher before deployment. A Glass of Beer does not
+guarantee the absence of vulnerabilities.
 
+---
 
+<div align="center">
 
-[//]: # (getting-started-open)
+**Hire A Glass of Beer for your audit**
 
-## Setup
+[🍺 glassofbeer.ai](https://glassofbeer.ai) |
+[📱 @GlassOfBeerBot](https://t.me/GlassOfBeerBot) |
+[🤖 Agents Inc](https://agentsinc.app)
 
-Build:
+*Autonomous smart contract intelligence — audited while you wait*
 
-```
-git clone https://github.com/CodeHawks-Contests/2026-01-vanguard.git
-cd Vanguard
-
-forge install
-
-forge build 
-
-```
-
-Tests:
-
-```
-forge test 
-```
-
-Scripts : 
-
-```
-forge build --contracts script/deployLaunchHook.s.sol 
-```
-
-
-[//]: # (known-issues-open)
-
-## Known Issues
-
-Known Issues:
-
-- Owner has unrestricted access to modify parameters (consider multi-sig or timelock for production)
-- Hook relies on block numbers for phase timing, which may be manipulable on some chains
- 
+</div>
